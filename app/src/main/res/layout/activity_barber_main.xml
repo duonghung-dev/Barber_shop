@@ -1,0 +1,1950 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ======================================== -->
+<!-- BARBER UPDATE - BARBER DASHBOARD        -->
+<!-- MÀN HÌNH 01: BARBER MAIN ACTIVITY       -->
+<!-- ======================================== -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/barberMainRoot"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
+    android:background="@color/background">
+
+    <!-- ======================================== -->
+    <!-- 1. HEADER - THÔNG TIN BARBER             -->
+    <!-- ======================================== -->
+
+    <LinearLayout
+
+        android:id="@+id/toolbarBarberMain"
+
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+
+        android:paddingStart="20dp"
+        android:paddingEnd="16dp"
+
+        android:background="@color/surface">
+
+        <!-- 1.1. AVATAR BARBER -->
+
+        <com.google.android.material.card.MaterialCardView
+
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+
+            app:cardCornerRadius="26dp"
+            app:cardElevation="0dp"
+
+            app:cardBackgroundColor="@color/primary">
+
+            <TextView
+
+                android:id="@+id/txtBarberAvatar"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center"
+
+                android:text="B"
+
+                android:textSize="23sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/surface"
+
+                android:contentDescription="Ảnh đại diện Barber"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 1.2. LỜI CHÀO VÀ TÊN BARBER -->
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+
+            android:layout_marginStart="14dp"
+
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Xin chào,"
+
+                android:textSize="13sp"
+
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+
+                android:id="@+id/txtBarberName"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="3dp"
+
+                android:text="Barber"
+
+                android:textSize="19sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/text_primary"
+
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+
+                android:id="@+id/txtBarberTodayDate"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Đang cập nhật ngày..."
+
+                android:textSize="12sp"
+
+                android:textColor="@color/text_secondary"
+
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+        </LinearLayout>
+
+        <!-- ======================================== -->
+        <!-- 1.3. NÚT THÔNG BÁO                      -->
+        <!-- ======================================== -->
+
+        <FrameLayout
+
+            android:id="@+id/btnBarberNotifications"
+
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:background="?attr/selectableItemBackgroundBorderless"
+
+            android:contentDescription="Mở thông báo Barber">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center"
+
+                android:text="🔔"
+
+                android:textSize="23sp"/>
+
+            <!-- SỐ THÔNG BÁO CHƯA ĐỌC -->
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:id="@+id/cardBarberNotificationBadge"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                android:layout_gravity="top|end"
+
+                android:visibility="gone"
+
+                app:cardCornerRadius="10dp"
+
+                app:cardElevation="0dp"
+
+                app:cardBackgroundColor="@color/primary">
+
+                <TextView
+
+                    android:id="@+id/txtBarberNotificationCount"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+
+                    android:text="0"
+
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/surface"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- ======================================== -->
+    <!-- 2. KHUNG NỘI DUNG DASHBOARD             -->
+    <!-- ======================================== -->
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_weight="1">
+
+        <!-- ======================================== -->
+        <!-- 2.1. NỘI DUNG CÓ THỂ CUỘN               -->
+        <!-- ======================================== -->
+
+        <androidx.core.widget.NestedScrollView
+
+            android:id="@+id/scrollBarberDashboardContent"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:fillViewport="true"
+
+            android:clipToPadding="false">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+
+                android:paddingStart="20dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="28dp">
+
+                <!-- ======================================== -->
+                <!-- 3. THẺ TỔNG QUAN HÔM NAY                  -->
+                <!-- ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:cardBackgroundColor="@color/primary_light"
+
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+
+                        android:padding="18dp">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="Tổng quan hôm nay"
+
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+
+                            android:textColor="@color/primary_dark"/>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="7dp"
+
+                            android:text="Theo dõi lịch hẹn và hoạt động làm việc của bạn."
+
+                            android:textSize="13sp"
+
+                            android:lineSpacingExtra="3dp"
+
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ======================================== -->
+                <!-- 4. TIÊU ĐỀ THỐNG KÊ                       -->
+                <!-- ======================================== -->
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="26dp"
+                    android:layout_marginBottom="14dp"
+
+                    android:text="Thống kê lịch hẹn"
+
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/text_primary"/>
+
+                <!-- ======================================== -->
+                <!-- 5. THỐNG KÊ - HÀNG 1                     -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 5.1. TỔNG LỊCH HẸN HÔM NAY -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+
+                            android:gravity="center_vertical"
+
+                            android:padding="16dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="📅"
+
+                                android:textSize="22sp"/>
+
+                            <TextView
+
+                                android:id="@+id/txtBarberTotalBookingsToday"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:text="—"
+
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:text="Tổng lịch hôm nay"
+
+                                android:textSize="12sp"
+
+                                android:textColor="@color/text_secondary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 5.2. LỊCH HẸN CHỜ XÁC NHẬN -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+
+                            android:gravity="center_vertical"
+
+                            android:padding="16dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="⏳"
+
+                                android:textSize="22sp"/>
+
+                            <TextView
+
+                                android:id="@+id/txtBarberPendingBookingsToday"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:text="—"
+
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/status_pending"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:text="Chờ xác nhận"
+
+                                android:textSize="12sp"
+
+                                android:textColor="@color/text_secondary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 6. THỐNG KÊ - HÀNG 2                     -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 6.1. LỊCH HẸN ĐÃ XÁC NHẬN -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+
+                            android:gravity="center_vertical"
+
+                            android:padding="16dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="✅"
+
+                                android:textSize="22sp"/>
+
+                            <TextView
+
+                                android:id="@+id/txtBarberConfirmedBookingsToday"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:text="—"
+
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/status_confirmed"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:text="Đã xác nhận"
+
+                                android:textSize="12sp"
+
+                                android:textColor="@color/text_secondary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 6.2. LỊCH HẸN HOÀN THÀNH -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:layout_width="0dp"
+                        android:layout_height="132dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+
+                            android:gravity="center_vertical"
+
+                            android:padding="16dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="⭐"
+
+                                android:textSize="22sp"/>
+
+                            <TextView
+
+                                android:id="@+id/txtBarberCompletedBookingsToday"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:text="—"
+
+                                android:textSize="28sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/status_completed"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:text="Đã hoàn thành"
+
+                                android:textSize="12sp"
+
+                                android:textColor="@color/text_secondary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 7. LỊCH LÀM VIỆC HÔM NAY                 -->
+                <!-- ======================================== -->
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="14dp"
+
+                    android:text="Lịch làm việc hôm nay"
+
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/text_primary"/>
+
+                <com.google.android.material.card.MaterialCardView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:cardBackgroundColor="@color/surface"
+
+                    app:cardCornerRadius="18dp"
+
+                    app:cardElevation="0dp"
+
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+
+                        android:padding="18dp">
+
+                        <!-- 7.1. TRẠNG THÁI LÀM VIỆC -->
+
+                        <TextView
+
+                            android:id="@+id/txtBarberWorkStatus"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="Chưa tải trạng thái làm việc"
+
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+
+                            android:textColor="@color/primary_dark"/>
+
+                        <!-- 7.2. THỜI GIAN CA LÀM -->
+
+                        <TextView
+
+                            android:id="@+id/txtBarberShiftTime"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="8dp"
+
+                            android:text="Ca làm việc: Chưa có dữ liệu"
+
+                            android:textSize="13sp"
+
+                            android:textColor="@color/text_secondary"/>
+
+                        <!-- 7.3. XEM LỊCH LÀM VIỆC -->
+
+                        <com.google.android.material.button.MaterialButton
+
+                            android:id="@+id/btnBarberViewSchedule"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+
+                            android:layout_marginTop="16dp"
+
+                            android:text="Xem lịch làm việc"
+
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+
+                            android:textAllCaps="false"
+
+                            android:textColor="@color/primary_dark"
+
+                            app:backgroundTint="@color/primary_light"
+
+                            app:cornerRadius="12dp"
+
+                            app:elevation="0dp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ======================================== -->
+                <!-- 8. LỊCH HẸN SẮP TỚI                      -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="14dp"
+
+                    android:gravity="center_vertical"
+
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:text="Lịch hẹn sắp tới"
+
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+
+                        android:textColor="@color/text_primary"/>
+
+                    <TextView
+
+                        android:id="@+id/btnBarberSeeAllBookings"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+
+                        android:gravity="center"
+
+                        android:paddingStart="12dp"
+                        android:paddingEnd="4dp"
+
+                        android:text="Xem tất cả ›"
+
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+
+                        android:textColor="@color/primary"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 8.1. SỐ LỊCH HẸN SẮP TỚI                -->
+                <!-- ======================================== -->
+
+                <TextView
+
+                    android:id="@+id/txtBarberUpcomingCount"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="12dp"
+
+                    android:text="Đang cập nhật lịch hẹn..."
+
+                    android:textSize="13sp"
+
+                    android:textColor="@color/text_secondary"/>
+
+                <!-- ======================================== -->
+                <!-- 8.2. DANH SÁCH LỊCH HẸN ĐỘNG             -->
+                <!-- ======================================== -->
+
+                <!--
+                    Java sẽ thêm các Card Booking
+                    vào LinearLayout này.
+
+                    Chỉ hiển thị khi có dữ liệu.
+                -->
+
+                <LinearLayout
+
+                    android:id="@+id/containerBarberUpcomingBookings"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+
+                    android:visibility="gone"/>
+
+                <!-- ======================================== -->
+                <!-- 8.3. TRẠNG THÁI DANH SÁCH TRỐNG         -->
+                <!-- ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+
+                    android:id="@+id/layoutBarberUpcomingEmpty"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:cardBackgroundColor="@color/surface"
+
+                    app:cardCornerRadius="16dp"
+
+                    app:cardElevation="0dp"
+
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+                        android:gravity="center"
+
+                        android:padding="24dp">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="🗓️"
+
+                            android:textSize="36sp"/>
+
+                        <TextView
+
+                            android:id="@+id/txtBarberUpcomingEmptyTitle"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="12dp"
+
+                            android:gravity="center"
+
+                            android:text="Chưa tải dữ liệu lịch hẹn"
+
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+
+                            android:textColor="@color/text_primary"/>
+
+                        <TextView
+
+                            android:id="@+id/txtBarberUpcomingEmptyMessage"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="8dp"
+
+                            android:gravity="center"
+
+                            android:text="Lịch hẹn sắp tới sẽ được hiển thị tại đây."
+
+                            android:textSize="13sp"
+
+                            android:lineSpacingExtra="3dp"
+
+                            android:textColor="@color/text_secondary"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ======================================== -->
+                <!-- 9. TIÊU ĐỀ TRUY CẬP NHANH                -->
+                <!-- ======================================== -->
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="14dp"
+
+                    android:text="Truy cập nhanh"
+
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/text_primary"/>
+
+                <!-- ======================================== -->
+                <!-- 10. TRUY CẬP NHANH - HÀNG 1             -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 10.1. LỊCH HẸN HÔM NAY -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberTodayBookings"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Mở lịch hẹn hôm nay"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="📆"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Lịch hẹn hôm nay"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 10.2. TẤT CẢ LỊCH HẸN -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberAllBookings"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Mở tất cả lịch hẹn"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="📋"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Tất cả lịch hẹn"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 11. TRUY CẬP NHANH - HÀNG 2             -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 11.1. QUẢN LÝ THỜI GIAN RẢNH -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberAvailability"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Quản lý thời gian rảnh"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="⏰"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Thời gian rảnh"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 11.2. DỊCH VỤ CỦA TÔI -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberServices"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Mở dịch vụ của tôi"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="✂️"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Dịch vụ của tôi"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 12. TRUY CẬP NHANH - HÀNG 3             -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 12.1. ĐÁNH GIÁ TỪ KHÁCH HÀNG -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberReviews"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Xem đánh giá khách hàng"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="⭐"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Đánh giá"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 12.2. THỐNG KÊ CÁ NHÂN -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberStatistics"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Xem thống kê cá nhân"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="📊"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Thống kê cá nhân"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 13. TRUY CẬP NHANH - HÀNG 4             -->
+                <!-- ======================================== -->
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+
+                    android:orientation="horizontal"
+
+                    android:baselineAligned="false">
+
+                    <!-- 13.1. ĐĂNG KÝ NGHỈ -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberTimeOff"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginEnd="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Đăng ký nghỉ làm"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="🌴"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Đăng ký nghỉ"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 13.2. ĐỀ XUẤT ĐỔI LỊCH -->
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:id="@+id/cardBarberReschedule"
+
+                        android:layout_width="0dp"
+                        android:layout_height="112dp"
+
+                        android:layout_weight="1"
+
+                        android:layout_marginStart="6dp"
+
+                        android:clickable="true"
+                        android:focusable="true"
+
+                        android:contentDescription="Đề xuất đổi lịch hẹn"
+
+                        android:foreground="?attr/selectableItemBackground"
+
+                        app:cardBackgroundColor="@color/surface"
+
+                        app:cardCornerRadius="16dp"
+
+                        app:cardElevation="0dp"
+
+                        app:strokeColor="@color/border_default"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:orientation="vertical"
+                            android:gravity="center"
+
+                            android:padding="12dp">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="🔄"
+
+                                android:textSize="28sp"/>
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="8dp"
+
+                                android:gravity="center"
+
+                                android:text="Đề xuất đổi lịch"
+
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+
+                                android:textColor="@color/text_primary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- ======================================== -->
+                <!-- 14. GHI CHÚ CHÂN TRANG                  -->
+                <!-- ======================================== -->
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="26dp"
+
+                    android:gravity="center"
+
+                    android:text="BarberUpdate • Không gian làm việc Barber"
+
+                    android:textSize="12sp"
+
+                    android:textColor="@color/text_secondary"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- ======================================== -->
+        <!-- 15. TRẠNG THÁI ĐANG TẢI DỮ LIỆU        -->
+        <!-- ======================================== -->
+
+        <ProgressBar
+
+            android:id="@+id/progressBarberDashboard"
+
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+
+            android:layout_gravity="center"
+
+            android:visibility="gone"
+
+            android:indeterminateTint="@color/primary"/>
+
+        <!-- ======================================== -->
+        <!-- 16. TRẠNG THÁI LỖI DASHBOARD           -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/layoutBarberDashboardError"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:padding="28dp"
+
+            android:background="@color/background"
+
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="⚠"
+
+                android:textSize="42sp"
+
+                android:textColor="@color/primary"/>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:gravity="center"
+
+                android:text="Không thể tải Dashboard"
+
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+
+                android:id="@+id/txtBarberDashboardError"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+
+                android:gravity="center"
+
+                android:text="Đã xảy ra lỗi khi tải dữ liệu."
+
+                android:textSize="14sp"
+
+                android:textColor="@color/text_secondary"/>
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/btnBarberDashboardRetry"
+
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+
+                android:layout_marginTop="22dp"
+
+                android:text="Thử lại"
+
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                android:textAllCaps="false"
+
+                android:textColor="@color/surface"
+
+                app:backgroundTint="@color/primary"
+
+                app:cornerRadius="12dp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- ======================================== -->
+    <!-- 17. THANH ĐIỀU HƯỚNG DƯỚI               -->
+    <!-- ======================================== -->
+
+    <!--
+        Sử dụng thanh điều hướng XML trực tiếp.
+
+        Không cần tạo thêm menu_barber.xml
+        hoặc drawable mới ở bước này.
+
+        BarberMainActivity.java sẽ xử lý
+        sự kiện nhấn vào từng mục.
+    -->
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="@color/border_default"/>
+
+    <LinearLayout
+
+        android:id="@+id/barberBottomNavigation"
+
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        android:background="@color/surface"
+
+        android:baselineAligned="false"
+
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
+
+        <!-- ======================================== -->
+        <!-- 17.1. TRANG CHỦ                         -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/navBarberHome"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Trang chủ Barber"
+
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="🏠"
+
+                android:textSize="23sp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Trang chủ"
+
+                android:textSize="11sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/primary"/>
+
+        </LinearLayout>
+
+        <!-- ======================================== -->
+        <!-- 17.2. LỊCH HẸN                         -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/navBarberBookings"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Tất cả lịch hẹn"
+
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="📅"
+
+                android:textSize="23sp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Lịch hẹn"
+
+                android:textSize="11sp"
+
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <!-- ======================================== -->
+        <!-- 17.3. LỊCH LÀM VIỆC                    -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/navBarberSchedule"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Lịch làm việc Barber"
+
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="🗓️"
+
+                android:textSize="23sp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Lịch làm"
+
+                android:textSize="11sp"
+
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <!-- ======================================== -->
+        <!-- 17.4. THÔNG BÁO                        -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/navBarberNotifications"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Thông báo Barber"
+
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="🔔"
+
+                android:textSize="23sp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Thông báo"
+
+                android:textSize="11sp"
+
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <!-- ======================================== -->
+        <!-- 17.5. HỒ SƠ BARBER                     -->
+        <!-- ======================================== -->
+
+        <LinearLayout
+
+            android:id="@+id/navBarberProfile"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Hồ sơ Barber"
+
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="👤"
+
+                android:textSize="23sp"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
+
+                android:text="Hồ sơ"
+
+                android:textSize="11sp"
+
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

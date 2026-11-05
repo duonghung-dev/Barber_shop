@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customerRescheduleBookingRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. TOOLBAR
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerRescheduleBooking"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Đổi lịch hẹn"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. KHU VỰC NỘI DUNG CHÍNH
+         ======================================== -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ========================================
+             2.1. NỘI DUNG ĐỔI LỊCH
+             ======================================== -->
+
+        <ScrollView
+            android:id="@+id/scrollCustomerRescheduleBooking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- ========================================
+                     3. TIÊU ĐỀ VÀ HƯỚNG DẪN
+                     ======================================== -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thay đổi thời gian hẹn"
+                    android:textColor="@color/text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Vui lòng chọn ngày và giờ mới phù hợp với lịch làm việc của Barber."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <!-- ========================================
+                     4. THÔNG TIN LỊCH HẸN
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- 4.1. Tiêu đề -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="THÔNG TIN LỊCH HẸN"
+                            android:textColor="@color/primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.2. Mã Booking -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Mã lịch hẹn"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleBookingCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="BK000001"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.3. Trạng thái Booking -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Trạng thái"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleBookingStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="Chờ xác nhận"
+                            android:textColor="@color/status_pending"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.4. Chi nhánh -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Chi nhánh"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleBranchName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="Barber Shop – Chi nhánh 1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.5. Dịch vụ -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Dịch vụ"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleServiceName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="Cắt tóc nam"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.6. Barber -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Barber thực hiện"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleBarberName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="Nguyễn Văn A"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.7. Thời lượng dịch vụ -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Thời lượng dịch vụ"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleDuration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="-- phút"
+                            tools:text="30 phút"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     5. THỜI GIAN HIỆN TẠI
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/primary_light"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- 5.1. Tiêu đề -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="THỜI GIAN HIỆN TẠI"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 5.2. Ngày hiện tại -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Ngày hẹn đã đặt"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleCurrentDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--"
+                            tools:text="Thứ năm, 05/11/2026"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 5.3. Giờ hiện tại -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Giờ bắt đầu đã đặt"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtRescheduleCurrentTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="--:--"
+                            tools:text="09:00"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     6. CHỌN NGÀY MỚI
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- 6.1. Tiêu đề -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHỌN NGÀY HẸN MỚI"
+                            android:textColor="@color/primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 6.2. Ngày đang được chọn -->
+
+                        <TextView
+                            android:id="@+id/txtRescheduleSelectedDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:text="Chưa chọn ngày mới"
+                            tools:text="Thứ sáu, 06/11/2026"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <!-- 6.3. Nút mở Date Picker -->
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRescheduleSelectDate"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="14dp"
+                            android:text="Chọn ngày mới"
+                            android:textAllCaps="false"
+                            android:textColor="@color/primary"
+                            android:textSize="14sp"
+                            app:strokeColor="@color/primary"
+                            app:strokeWidth="1dp"
+                            app:cornerRadius="12dp" />
+
+                        <!-- 6.4. Hướng dẫn chọn ngày -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Chỉ được chọn ngày hôm nay hoặc ngày trong tương lai."
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     7. CHỌN KHUNG GIỜ MỚI
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- 7.1. Tiêu đề -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CHỌN GIỜ HẸN MỚI"
+                            android:textColor="@color/primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 7.2. Khung giờ hoạt động -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Buổi sáng: 08:00 – 12:00&#10;Buổi chiều: 13:00 – 18:00"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="4dp" />
+
+                        <!-- 7.3. Hướng dẫn chọn giờ -->
+
+                        <TextView
+                            android:id="@+id/txtRescheduleTimeHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Vui lòng chọn ngày mới để xem các khung giờ."
+                            android:textColor="@color/text_secondary"
+                            android:textSize="13sp" />
+
+                        <!-- 7.4. Danh sách khung giờ -->
+
+                        <!--
+                            Java sẽ tạo các Chip giờ tại đây.
+                            Mỗi Chip đại diện cho một giờ bắt đầu,
+                            ví dụ 08:00, 08:30, 09:00...
+
+                            Các giờ không hợp lệ hoặc trùng lịch
+                            Barber sẽ được loại bỏ.
+                        -->
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupRescheduleTimeSlots"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:singleSelection="true"
+                            app:selectionRequired="true"
+                            app:chipSpacingHorizontal="8dp"
+                            app:chipSpacingVertical="8dp">
+
+                            <!--
+                                Không tạo Chip cố định ở XML.
+                                Java sẽ thêm dữ liệu giờ phù hợp.
+                            -->
+
+                        </com.google.android.material.chip.ChipGroup>
+
+                        <!-- 7.5. Giờ đã chọn -->
+
+                        <TextView
+                            android:id="@+id/txtRescheduleSelectedTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Giờ mới: Chưa chọn"
+                            tools:text="Giờ mới: 10:30"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     8. THÔNG BÁO TRƯỚC KHI ĐỔI LỊCH
+                     ======================================== -->
+
+                <TextView
+                    android:id="@+id/txtRescheduleNotice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="Chi nhánh, dịch vụ và Barber sẽ được giữ nguyên. Chỉ ngày và giờ hẹn được thay đổi."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:accessibilityLiveRegion="polite" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- ========================================
+             9. LOADING KHI ĐỌC BOOKING
+             ======================================== -->
+
+        <ProgressBar
+            android:id="@+id/progressCustomerRescheduleBooking"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- ========================================
+             10. THÔNG BÁO LỖI
+             ======================================== -->
+
+        <LinearLayout
+            android:id="@+id/layoutCustomerRescheduleError"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Không thể đổi lịch hẹn"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCustomerRescheduleError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Vui lòng kiểm tra lại thông tin."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- ========================================
+         11. KHU VỰC NÚT XÁC NHẬN
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/surface">
+
+        <!-- 11.1. Trạng thái xác nhận -->
+
+        <TextView
+            android:id="@+id/txtRescheduleConfirmationStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Vui lòng chọn ngày và giờ mới."
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:accessibilityLiveRegion="polite" />
+
+        <!-- 11.2. Nút xác nhận đổi lịch -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmReschedule"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:enabled="false"
+            android:text="Xác nhận đổi lịch"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

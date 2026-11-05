@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCustomerNotification"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border_default"
+    app:strokeWidth="1dp">
+
+    <!-- ========================================
+         1. CONTAINER CHÍNH
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:padding="16dp">
+
+        <!-- ========================================
+             2. BIỂU TƯỢNG THÔNG BÁO
+             ======================================== -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCustomerNotificationIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <!-- ========================================
+                 2.1. ICON THEO LOẠI THÔNG BÁO
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerNotificationIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="🔔"
+                android:textSize="23sp"
+                android:contentDescription="Biểu tượng thông báo" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ========================================
+             3. NỘI DUNG THÔNG BÁO
+             ======================================== -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:orientation="vertical">
+
+            <!-- ========================================
+                 3.1. LOẠI THÔNG BÁO VÀ TRẠNG THÁI
+                 ======================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 3.1.1. Loại thông báo -->
+
+                <TextView
+                    android:id="@+id/txtCustomerNotificationType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Đặt lịch thành công"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Lịch hẹn đã xác nhận" />
+
+                <!-- ========================================
+                     3.1.2. DẤU CHẤM CHƯA ĐỌC
+                     ======================================== -->
+
+                <!--
+                    Mặc định hiển thị dấu chấm.
+
+                    Adapter sẽ:
+                    - Hiển thị khi isRead = false
+                    - Ẩn khi isRead = true
+                -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardCustomerNotificationUnreadDot"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="8dp"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="0dp" />
+
+            </LinearLayout>
+
+            <!-- ========================================
+                 3.2. TIÊU ĐỀ THÔNG BÁO
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerNotificationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Lịch hẹn đã được xác nhận"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- ========================================
+                 3.3. NỘI DUNG THÔNG BÁO
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerNotificationMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Lịch hẹn của bạn đã được xác nhận. Vui lòng đến đúng thời gian đã đặt."
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="3"
+                android:ellipsize="end" />
+
+            <!-- ========================================
+                 3.4. THỜI GIAN TẠO THÔNG BÁO
+                 ======================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 3.4.1. Biểu tượng thời gian -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="◷"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="15sp"
+                    android:importantForAccessibility="no" />
+
+                <!-- 3.4.2. Ngày giờ -->
+
+                <TextView
+                    android:id="@+id/txtCustomerNotificationTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="05/11/2026 - 09:30"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

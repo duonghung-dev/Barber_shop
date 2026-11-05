@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customerBookingHistoryRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. THANH TIÊU ĐỀ
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerBookingHistory"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Lịch sử đặt lịch"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. KHU VỰC GIỚI THIỆU
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp">
+
+        <!-- 2.1. Tiêu đề -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lịch sử của bạn"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- 2.2. Mô tả -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Xem lại các lịch hẹn đã hoàn thành, đã hủy hoặc đã qua giờ."
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:lineSpacingExtra="3dp" />
+
+        <!-- ========================================
+             3. THẺ TỔNG QUAN LỊCH SỬ
+             ======================================== -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- 3.1. Nhãn thống kê -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TỔNG LỊCH SỬ ĐẶT LỊCH"
+                    android:textColor="@color/primary_dark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <!-- 3.2. Tổng số lịch sử -->
+
+                <TextView
+                    android:id="@+id/txtCustomerHistoryTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="0 lịch hẹn"
+                    tools:text="12 lịch hẹn"
+                    android:textColor="@color/primary_dark"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <!-- 3.3. Ghi chú -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Dữ liệu lịch hẹn đã được ghi nhận"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ========================================
+             4. TIÊU ĐỀ BỘ LỌC
+             ======================================== -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Lọc theo trạng thái"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- ========================================
+             5. BỘ LỌC LỊCH SỬ
+             ======================================== -->
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupCustomerHistoryFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:chipSpacingHorizontal="8dp"
+            app:chipSpacingVertical="8dp">
+
+            <!-- 5.1. Tất cả -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerHistoryAll"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tất cả"
+                android:checkable="true"
+                android:checked="true"
+                app:checkedIconVisible="false" />
+
+            <!-- 5.2. Đã hoàn thành -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerHistoryCompleted"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hoàn thành"
+                android:checkable="true"
+                app:checkedIconVisible="false" />
+
+            <!-- 5.3. Đã hủy -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerHistoryCancelled"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã hủy"
+                android:checkable="true"
+                app:checkedIconVisible="false" />
+
+            <!-- 5.4. Quá giờ -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerHistoryOverdue"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quá giờ"
+                android:checkable="true"
+                app:checkedIconVisible="false" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- ========================================
+             6. SỐ LƯỢNG KẾT QUẢ
+             ======================================== -->
+
+        <TextView
+            android:id="@+id/txtCustomerHistoryCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="0 kết quả"
+            tools:text="8 kết quả"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <!-- ========================================
+         7. VÙNG DANH SÁCH, LOADING VÀ EMPTY
+         ======================================== -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ========================================
+             7.1. RECYCLERVIEW LỊCH SỬ
+             ======================================== -->
+
+        <!--
+            Sử dụng lại item_customer_booking.xml
+            từ màn hình STT 14.
+
+            Java sẽ sử dụng CustomerBookingAdapter
+            để hiển thị từng Booking.
+
+            tools:visibility chỉ phục vụ Preview.
+        -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCustomerBookingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:listitem="@layout/item_customer_booking"
+            tools:itemCount="3" />
+
+        <!-- ========================================
+             7.2. TRẠNG THÁI KHÔNG CÓ LỊCH SỬ
+             ======================================== -->
+
+        <LinearLayout
+            android:id="@+id/layoutEmptyCustomerBookingHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <!-- 7.2.1. Tiêu đề -->
+
+            <TextView
+                android:id="@+id/txtEmptyCustomerHistoryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Chưa có lịch sử đặt lịch"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- 7.2.2. Nội dung -->
+
+            <TextView
+                android:id="@+id/txtEmptyCustomerHistorySubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Các lịch hẹn đã hoàn thành, đã hủy hoặc quá giờ sẽ xuất hiện tại đây."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- 7.2.3. Nút khám phá dịch vụ -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCustomerHistoryExploreServices"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="22dp"
+                android:text="Khám phá dịch vụ"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+        <!-- ========================================
+             7.3. LOADING
+             ======================================== -->
+
+        <ProgressBar
+            android:id="@+id/progressCustomerBookingHistory"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>
+

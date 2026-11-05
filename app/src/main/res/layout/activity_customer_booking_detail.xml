@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customerBookingDetailRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. THANH TIÊU ĐỀ
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerBookingDetail"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Chi tiết lịch hẹn"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. VÙNG NỘI DUNG, LOADING VÀ LỖI
+         ======================================== -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ========================================
+             2.1. NỘI DUNG CHI TIẾT BOOKING
+             ======================================== -->
+
+        <ScrollView
+            android:id="@+id/scrollCustomerBookingDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- ========================================
+                     3. MÃ LỊCH HẸN VÀ TRẠNG THÁI
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/primary_light"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <!-- 3.1. Tiêu đề -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="MÃ LỊCH HẸN"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <!-- 3.2. Mã và nút sao chép -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtDetailBookingCode"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="--"
+                                tools:text="BK000001"
+                                android:textColor="@color/primary_dark"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnDetailCopyCode"
+                                style="@style/Widget.Material3.Button.TextButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:enabled="false"
+                                android:text="Sao chép"
+                                android:textAllCaps="false"
+                                android:textColor="@color/primary_dark" />
+
+                        </LinearLayout>
+
+                        <!-- 3.3. Nhãn trạng thái -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Trạng thái lịch hẹn"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <!-- 3.4. Trạng thái Booking -->
+
+                        <TextView
+                            android:id="@+id/txtDetailBookingStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="Chờ xác nhận"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     4. THÔNG TIN DỊCH VỤ
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="THÔNG TIN DỊCH VỤ"
+                            android:textColor="@color/primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.1. Chi nhánh -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Chi nhánh"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailBranchName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="Barber Shop - Chi nhánh 1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.2. Dịch vụ -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Dịch vụ"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailServiceName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="Cắt tóc nam"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 4.3. Barber -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Barber thực hiện"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailBarberName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="Nguyễn Văn A"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     5. THÔNG TIN THỜI GIAN
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/surface"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/border_default"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="THỜI GIAN LỊCH HẸN"
+                            android:textColor="@color/primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <!-- 5.1. Ngày hẹn -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Ngày hẹn"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailBookingDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="Thứ năm, 05/11/2026"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <!-- 5.2. Giờ bắt đầu -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Giờ bắt đầu"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailBookingTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            tools:text="09:00"
+                            android:textColor="@color/text_primary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <!-- 5.3. Thời lượng -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Thời lượng dịch vụ"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtDetailDuration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="-- phút"
+                            tools:text="30 phút"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     6. CHI PHÍ ĐẶT LỊCH
+                     ======================================== -->
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="@color/primary_light"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tổng tiền dự kiến"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtDetailTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-- đ"
+                            tools:text="100.000 đ"
+                            android:textColor="@color/primary_dark"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================
+                     7. THÔNG BÁO DỮ LIỆU
+                     ======================================== -->
+
+                <TextView
+                    android:id="@+id/txtDetailNotice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="Dữ liệu được lưu cục bộ trên thiết bị."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- ========================================
+             8. TRẠNG THÁI ĐANG TẢI
+             ======================================== -->
+
+        <ProgressBar
+            android:id="@+id/progressCustomerBookingDetail"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- ========================================
+             9. THÔNG BÁO LỖI
+             ======================================== -->
+
+        <LinearLayout
+            android:id="@+id/layoutCustomerBookingDetailError"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Không thể hiển thị lịch hẹn"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCustomerBookingDetailError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Vui lòng quay lại danh sách."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- ========================================
+         10. KHU VỰC CÁC NÚT CHỨC NĂNG
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/surface">
+
+        <!-- ========================================
+             10.1. ĐỔI LỊCH HẸN - STT 16
+             ======================================== -->
+
+        <!--
+            Chỉ hiển thị khi Booking còn hiệu lực
+            và chưa đến giờ bắt đầu.
+        -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailRescheduleBooking"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:visibility="gone"
+            android:enabled="false"
+            tools:visibility="visible"
+            android:text="Đổi lịch hẹn"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+        <!-- ========================================
+             10.2. HỦY LỊCH HẸN - STT 17
+             ======================================== -->
+
+        <!--
+            Ban đầu ẩn và khóa nút Hủy lịch.
+
+            CustomerBookingDetailActivity sẽ kiểm tra:
+            - Booking thuộc Customer hiện tại
+            - Trạng thái PENDING hoặc CONFIRMED
+            - Chưa đến giờ bắt đầu
+
+            Khi hợp lệ, Java sẽ hiển thị nút.
+        -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailCancelBooking"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:enabled="false"
+            tools:visibility="visible"
+            android:text="Hủy lịch hẹn"
+            android:textAllCaps="false"
+            android:textColor="@color/status_cancelled"
+            android:textSize="16sp"
+            app:strokeColor="@color/status_cancelled"
+            app:strokeWidth="1dp"
+            app:cornerRadius="12dp" />
+
+        <!-- ========================================
+             10.3. ĐÁNH GIÁ DỊCH VỤ - STT 20 (MỚI)
+             ======================================== -->
+
+        <!--
+            Nút dành cho Booking đã COMPLETED.
+
+            Java sẽ kiểm tra:
+            - Booking thuộc Customer hiện tại
+            - Trạng thái là COMPLETED
+            - Booking đã được đánh giá hay chưa
+
+            Nếu chưa đánh giá:
+            Hiển thị "Đánh giá dịch vụ".
+
+            Nếu đã đánh giá:
+            Hiển thị "Xem đánh giá".
+
+            Nút được ẩn và khóa mặc định để
+            tránh thao tác khi chưa tải dữ liệu.
+        -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailReviewBooking"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:enabled="false"
+            tools:visibility="visible"
+            android:text="Đánh giá dịch vụ"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+        <!-- ========================================
+             10.4. QUAY LẠI LỊCH HẸN CỦA TÔI
+             ======================================== -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetailBackToList"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:text="Quay lại lịch hẹn của tôi"
+            android:textAllCaps="false"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="1dp"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

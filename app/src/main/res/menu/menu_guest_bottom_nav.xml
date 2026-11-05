@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navGuestHome"
+        android:icon="@drawable/ic_guest_nav_home"
+        android:title="Trang chủ" />
+
+    <item
+        android:id="@+id/navGuestBranches"
+        android:icon="@drawable/ic_guest_nav_branch"
+        android:title="Chi nhánh" />
+
+    <item
+        android:id="@+id/navGuestServices"
+        android:icon="@drawable/ic_guest_nav_service"
+        android:title="Dịch vụ" />
+
+    <item
+        android:id="@+id/navGuestAccount"
+        android:icon="@drawable/ic_guest_nav_account"
+        android:title="Tài khoản" />
+
+</menu>

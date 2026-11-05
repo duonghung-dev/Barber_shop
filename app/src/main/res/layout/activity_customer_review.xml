@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customerReviewRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. TOOLBAR
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerReview"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Đánh giá dịch vụ"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. NỘI DUNG CUỘN
+         ======================================== -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ========================================
+                 3. TIÊU ĐỀ
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chia sẻ trải nghiệm của bạn"
+                android:textColor="@color/text_primary"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Đánh giá của bạn giúp cải thiện chất lượng dịch vụ và trải nghiệm đặt lịch."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- ========================================
+                 4. THÔNG TIN BOOKING
+                 ======================================== -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border_default"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <!-- 4.1. Mã Booking -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerReviewBookingCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mã lịch hẹn: --"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- 4.2. Tên dịch vụ -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerReviewServiceName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Đang tải thông tin dịch vụ"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <!-- 4.3. Tên Barber -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerReviewBarberName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Barber: --"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <!-- 4.4. Ngày giờ Booking -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerReviewBookingDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Ngày hẹn: --"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <!-- 4.5. Trạng thái hoàn thành -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Đã hoàn thành"
+                        android:textColor="@color/status_completed"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ========================================
+                 5. ĐÁNH GIÁ BARBER
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Đánh giá Barber"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Bạn hài lòng với Barber ở mức độ nào?"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <!-- 5.1. Chấm điểm Barber -->
+
+            <RatingBar
+                android:id="@+id/ratingCustomerBarber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="0"
+                android:isIndicator="false"
+                android:contentDescription="Chấm điểm Barber từ 1 đến 5 sao" />
+
+            <!-- 5.2. Thông báo số sao -->
+
+            <TextView
+                android:id="@+id/txtCustomerBarberRatingValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Chưa chọn số sao"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <!-- ========================================
+                 6. ĐÁNH GIÁ DỊCH VỤ
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Đánh giá dịch vụ"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Chất lượng dịch vụ có đáp ứng mong đợi của bạn không?"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <!-- 6.1. Chấm điểm dịch vụ -->
+
+            <RatingBar
+                android:id="@+id/ratingCustomerService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="0"
+                android:isIndicator="false"
+                android:contentDescription="Chấm điểm dịch vụ từ 1 đến 5 sao" />
+
+            <!-- 6.2. Thông báo số sao -->
+
+            <TextView
+                android:id="@+id/txtCustomerServiceRatingValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Chưa chọn số sao"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <!-- ========================================
+                 7. NHẬN XÉT CỦA CUSTOMER
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="Nhận xét của bạn"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Chia sẻ thêm về trải nghiệm của bạn (không bắt buộc)."
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <!-- 7.1. Ô nhập nhận xét -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutCustomerReviewComment"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:boxStrokeColor="@color/primary"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="500">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCustomerReviewComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="120dp"
+                    android:gravity="top|start"
+                    android:hint="Nhập nhận xét của bạn..."
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="4"
+                    android:maxLines="8"
+                    android:maxLength="500"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ========================================
+                 8. LƯU Ý
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="20dp"
+                android:text="Vui lòng chấm điểm dựa trên trải nghiệm thực tế. Mỗi lịch hẹn đã hoàn thành chỉ được gửi một đánh giá."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:lineSpacingExtra="4dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- ========================================
+         9. NÚT GỬI ĐÁNH GIÁ
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCustomerSubmitReview"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Gửi đánh giá"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:enabled="false"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+        <ProgressBar
+            android:id="@+id/progressCustomerSubmitReview"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

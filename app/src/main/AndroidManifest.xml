@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BarberUpdate">
+        <!--Splash-->
+        <activity
+            android:name=".ui.common.splash.SplashActivity"
+            android:theme="@style/Theme.BarberUpdate.Splash"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <!--Login-->
+        <activity
+            android:name=".ui.auth.login.LoginActivity"
+            android:exported="false" />
+        <!--Register-->
+        <activity
+            android:name=".ui.auth.register.RegisterActivity"
+            android:exported="false" />
+        <!--OTP-->
+        <activity
+            android:name=".ui.auth.otp.VerifyOtpActivity"
+            android:exported="false" />
+        <!--Forgot Password-->
+        <activity
+            android:name=".ui.auth.forgotpassword.ForgotPasswordActivity"
+            android:exported="false" />
+        <!--Reset Password-->
+        <activity
+            android:name=".ui.auth.resetpassword.ResetPasswordActivity"
+            android:exported="false" />
+        <!--Guest Home-->
+        <activity
+            android:name=".ui.guest.home.GuestHomeActivity"
+            android:exported="false" />
+        <!-- Branch List -->
+        <activity
+            android:name=".ui.guest.branch.BranchListActivity"
+            android:exported="false" />
+        <!--Branch Detail-->
+        <activity
+            android:name=".ui.guest.branch.BranchDetailActivity"
+            android:exported="false" />
+        <!-- Service List -->
+        <activity
+            android:name=".ui.guest.service.ServiceListActivity"
+            android:exported="false" />
+        <!--Service Detail-->
+        <activity
+            android:name=".ui.guest.service.ServiceDetailActivity"
+            android:exported="false" />
+        <!--Barber List-->
+        <activity
+            android:name=".ui.guest.barber.BarberListActivity"
+            android:exported="false" />
+        <!-- Barber Detail -->
+        <activity
+            android:name=".ui.guest.barber.BarberDetailActivity"
+            android:exported="false" />
+        <!--Search Activity-->
+        <activity
+            android:name=".ui.guest.search.SearchActivity"
+            android:exported="false" />
+        <!-- Customer -->
+        <!-- Customer Home -->
+        <activity
+            android:name=".ui.customer.home.CustomerHomeActivity"
+            android:exported="false" />
+        <!--Branch List-->
+        <activity
+            android:name=".ui.customer.branch.CustomerBranchListActivity"
+            android:exported="false" />
+        <!--Branch Detail-->
+        <activity
+            android:name=".ui.customer.branch.CustomerBranchDetailActivity"
+            android:exported="false" />
+        <!-- Service List -->
+        <activity
+            android:name=".ui.customer.service.CustomerServiceListActivity"
+            android:exported="false" />
+        <!-- Service Detail -->
+        <activity
+            android:name=".ui.customer.service.CustomerServiceDetailActivity"
+            android:exported="false" />
+        <!-- Barber List -->
+        <activity
+            android:name=".ui.customer.barber.CustomerBarberListActivity"
+            android:exported="false" />
+        <!-- Barber Detail -->
+        <activity
+            android:name=".ui.customer.barber.CustomerBarberDetailActivity"
+            android:exported="false" />
+        <!-- Customer Search & Filter -->
+        <activity
+            android:name=".ui.customer.search.CustomerSearchActivity"
+            android:exported="false" />
+        <!-- Customer - Chọn ngày và giờ đặt lịch -->
+        <activity
+            android:name=".ui.customer.booking.CustomerSelectDateTimeActivity"
+            android:exported="false" />
+        <!-- Customer - Xác nhận đặt lịch -->
+        <activity
+            android:name=".ui.customer.booking.CustomerBookingConfirmationActivity"
+            android:exported="false" />
+        <!-- Customer Booking Success -->
+        <activity
+            android:name=".ui.customer.booking.CustomerBookingSuccessActivity"
+            android:exported="false" />
+        <!-- Customer - Lịch hẹn của tôi -->
+        <activity
+            android:name=".ui.customer.booking.CustomerMyBookingsActivity"
+            android:exported="false" />
+        <!-- Customer Booking Detail -->
+        <activity
+            android:name=".ui.customer.booking.CustomerBookingDetailActivity"
+            android:exported="false" />
+        <!--reschedule booking-->
+        <activity
+            android:name=".ui.customer.booking.CustomerRescheduleBookingActivity"
+            android:exported="false" />
+        <!--Booking History-->
+        <activity
+            android:name=".ui.customer.booking.CustomerBookingHistoryActivity"
+            android:exported="false" />
+        <!-- Favourite Barber -->
+        <activity
+            android:name=".ui.customer.barber.CustomerFavoriteBarbersActivity"
+            android:exported="false" />
+        <!-- Review -->
+        <activity
+            android:name=".ui.customer.review.CustomerReviewActivity"
+            android:exported="false" />
+        <!-- Customer Notifications -->
+        <activity
+            android:name=".ui.customer.notification.CustomerNotificationsActivity"
+            android:exported="false" />
+        <!--Customer profile-->
+        <activity
+            android:name=".ui.customer.profile.CustomerProfileActivity"
+            android:exported="false" />
+        <!-- Customer edit profile -->
+        <activity
+            android:name=".ui.customer.profile.CustomerEditProfileActivity"
+            android:exported="false" />
+        <!-- Barber -->>
+        <!--Main-Home-->
+        <activity
+            android:name=".ui.barber.home.BarberMainActivity"
+            android:exported="false" />
+        <!--Today Booking-->
+        <activity
+            android:name=".ui.barber.booking.BarberTodayBookingActivity"
+            android:exported="false" />
+        <!--TẤT CẢ LỊCH HẸN -->
+        <activity
+            android:name=".ui.barber.booking.BarberBookingActivity"
+            android:exported="false" />
+        <!--CHI TIẾT LỊCH HẸN -->
+        <activity
+            android:name=".ui.barber.booking.BarberBookingDetailActivity"
+            android:exported="false" />
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/cardBarberTodayBookingItem"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_marginBottom="12dp"
+
+    android:clickable="true"
+    android:focusable="true"
+
+    android:foreground="?attr/selectableItemBackground"
+
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+
+    app:strokeColor="@color/border_default"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 1. MÃ LỊCH HẸN VÀ TRẠNG THÁI -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/txtBarberTodayItemBookingCode"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Mã lịch: BK000001"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_secondary"
+
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberTodayItemStatus"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+
+                android:text="Chờ xác nhận"
+                android:textSize="11sp"
+
+                android:clickable="false"
+                android:checkable="false"
+                android:focusable="false"
+
+                app:chipCornerRadius="12dp"
+                app:chipStrokeWidth="0dp"
+                app:chipIconVisible="false"
+                app:checkedIconVisible="false"
+                app:closeIconVisible="false"/>
+
+        </LinearLayout>
+
+        <!-- 2. TÊN DỊCH VỤ -->
+
+        <TextView
+            android:id="@+id/txtBarberTodayItemService"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+
+            android:text="Cắt tóc nam"
+
+            android:textSize="17sp"
+            android:textStyle="bold"
+
+            android:textColor="@color/text_primary"
+
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <!-- 3. KHUNG THỜI GIAN HẸN -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="14dp"
+
+            android:padding="12dp"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+
+            android:background="@color/primary_light">
+
+            <!-- 3.1. GIỜ HẸN -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Giờ hẹn"
+
+                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/txtBarberTodayItemTime"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="4dp"
+
+                    android:text="09:00"
+
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark"/>
+
+            </LinearLayout>
+
+            <!-- 3.2. NGÀY HẸN -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="12dp"
+
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Ngày hẹn"
+
+                    android:textSize="11sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/txtBarberTodayItemDate"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="6dp"
+
+                    android:text="05/11/2026"
+
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 4. THỜI LƯỢNG DỊCH VỤ -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="14dp"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:text="Thời lượng dịch vụ"
+
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+                android:id="@+id/txtBarberTodayItemDuration"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="12dp"
+
+                android:text="30 phút"
+
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+
+        </LinearLayout>
+
+        <!-- 5. MÃ KHÁCH HÀNG -->
+
+        <TextView
+            android:id="@+id/txtBarberTodayItemCustomerId"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+
+            android:text="Mã khách hàng: CUS000001"
+
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <!-- 6. CHI NHÁNH -->
+
+        <TextView
+            android:id="@+id/txtBarberTodayItemBranch"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="9dp"
+
+            android:text="Chi nhánh: BarberUpdate"
+
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <!-- 7. ĐƯỜNG PHÂN CÁCH -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="13dp"
+
+            android:background="@color/border_default"/>
+
+        <!-- 8. TỔNG TIỀN VÀ XEM CHI TIẾT -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Tổng tiền"
+
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/txtBarberTodayItemPrice"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="3dp"
+
+                    android:text="100.000 đ"
+
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_dark"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="10dp"
+
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:text="Xem chi tiết ›"
+
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customerBarberDetailRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. TOOLBAR
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerBarberDetail"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Chi tiết Barber"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. NỘI DUNG CÓ THỂ CUỘN
+         ======================================== -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ========================================
+                 3. ẢNH ĐẠI DIỆN BARBER
+                 ======================================== -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/primary_light"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgCustomerDetailBarber"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_guest_nav_account"
+                        android:contentDescription="Ảnh đại diện Barber"
+                        app:tint="@color/primary" />
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ========================================
+                 4. TÊN BARBER VÀ NÚT YÊU THÍCH
+                 ======================================== -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 4.1. Tên Barber -->
+
+                <TextView
+                    android:id="@+id/txtCustomerDetailBarberName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nguyễn Minh Anh"
+                    android:textColor="@color/text_primary"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <!-- ========================================
+                     4.2. NÚT YÊU THÍCH - STT 19 (MỚI)
+                     ======================================== -->
+
+                <!--
+                    Trạng thái:
+                    ♡ : Chưa yêu thích
+                    ♥ : Đã yêu thích
+
+                    Java sẽ đọc trạng thái hiện tại
+                    từ FavoriteBarberRepository.
+
+                    Nút tạm khóa trong XML.
+                    Chỉ cho phép tương tác sau khi
+                    Java đã tải thành công Barber.
+                -->
+
+                <TextView
+                    android:id="@+id/btnCustomerDetailBarberFavorite"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:text="♡"
+                    android:textSize="32sp"
+                    android:textColor="@color/primary"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:enabled="false"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Thêm Barber vào yêu thích" />
+
+            </LinearLayout>
+
+            <!-- ========================================
+                 5. CHUYÊN MÔN BARBER
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerDetailBarberSpecialty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Cắt tóc nam"
+                android:textColor="@color/primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- ========================================
+                 6. ĐÁNH GIÁ BARBER
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerDetailBarberRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="★ 4.8 / 5.0"
+                android:textColor="@color/status_pending"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- ========================================
+                 7. TIÊU ĐỀ THÔNG TIN BARBER
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Thông tin Barber"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <!-- ========================================
+                 8. CARD KINH NGHIỆM
+                 ======================================== -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border_default"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <!-- 8.1. Nhãn kinh nghiệm -->
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="KINH NGHIỆM"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <!-- 8.2. Số năm kinh nghiệm -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerDetailBarberExperience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="5 năm kinh nghiệm"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ========================================
+                 9. TIÊU ĐỀ CHI NHÁNH LÀM VIỆC
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Chi nhánh làm việc"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <!-- ========================================
+                 10. CARD THÔNG TIN CHI NHÁNH
+                 ======================================== -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border_default"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <!-- 10.1. Tên chi nhánh -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerDetailBarberBranchName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Barber Shop - Chi nhánh 01"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!-- 10.2. Địa chỉ chi nhánh -->
+
+                    <TextView
+                        android:id="@+id/txtCustomerDetailBarberBranchAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Địa chỉ chi nhánh"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <!-- 10.3. Xem chi tiết chi nhánh -->
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCustomerViewBarberBranch"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Xem chi tiết chi nhánh"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary"
+                        app:strokeColor="@color/primary"
+                        app:cornerRadius="12dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ========================================
+                 11. GHI CHÚ DỮ LIỆU MINH HỌA
+                 ======================================== -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="Thông tin Barber hiện là dữ liệu minh họa."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- ========================================
+         12. NÚT ĐẶT LỊCH CỐ ĐỊNH
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp">
+
+        <!-- 12.1. Hướng dẫn dành cho Customer -->
+
+        <TextView
+            android:id="@+id/txtCustomerBarberBookingHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="Tiếp tục chọn dịch vụ và thời gian phù hợp."
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <!-- 12.2. Nút đặt lịch -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCustomerBookWithBarber"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Đặt lịch với Barber"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

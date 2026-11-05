@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardCustomerFavoriteBarber"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/border_default"
+    app:strokeWidth="1dp">
+
+    <!-- ========================================
+         1. NỘI DUNG CARD BARBER YÊU THÍCH
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <!-- ========================================
+             2. ẢNH ĐẠI DIỆN BARBER
+             ======================================== -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <!--
+                Ảnh đại diện Barber.
+
+                Hiện tại sử dụng biểu tượng mặc định
+                có sẵn trong Android.
+
+                Ở bước Adapter, Java có thể thay ảnh
+                nếu BarberRepository cung cấp ảnh.
+            -->
+
+            <ImageView
+                android:id="@+id/imgCustomerFavoriteBarber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="18dp"
+                android:src="@android:drawable/ic_menu_myplaces"
+                android:tint="@color/primary"
+                android:scaleType="centerInside"
+                android:contentDescription="Ảnh đại diện Barber" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ========================================
+             3. THÔNG TIN BARBER
+             ======================================== -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <!-- ========================================
+                 3.1. TÊN BARBER
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerFavoriteBarberName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên Barber"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Nguyễn Văn A" />
+
+            <!-- ========================================
+                 3.2. CHI NHÁNH LÀM VIỆC
+                 ======================================== -->
+
+            <TextView
+                android:id="@+id/txtCustomerFavoriteBarberBranch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Chi nhánh"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Chi nhánh Quận 1" />
+
+            <!-- ========================================
+                 3.3. NÚT XEM CHI TIẾT BARBER
+                 ======================================== -->
+
+            <!--
+                Customer nhấn vào nút này để mở
+                CustomerBarberDetailActivity.
+
+                Java sẽ truyền barberId qua Intent.
+            -->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCustomerFavoriteViewDetail"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-12dp"
+                android:layout_marginTop="2dp"
+                android:text="Xem chi tiết"
+                android:textAllCaps="false"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                app:insetTop="0dp"
+                app:insetBottom="0dp" />
+
+        </LinearLayout>
+
+        <!-- ========================================
+             4. NÚT BỎ YÊU THÍCH
+             ======================================== -->
+
+        <!--
+            Dùng ký tự trái tim thay vì drawable
+            riêng để không cần tạo thêm tài nguyên.
+
+            Khi Customer nhấn trái tim:
+            - Gọi FavoriteBarberRepository.removeFavorite()
+            - Lưu trạng thái yêu thích mới
+            - Cập nhật danh sách RecyclerView
+
+            Thao tác thực tế sẽ xử lý trong Adapter
+            và Activity ở các bước tiếp theo.
+        -->
+
+        <TextView
+            android:id="@+id/btnCustomerFavoriteRemove"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="♥"
+            android:textColor="@color/status_cancelled"
+            android:textSize="30sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Bỏ Barber khỏi yêu thích" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

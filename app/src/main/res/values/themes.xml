@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.BarberUpdate"
+        parent="Theme.Material3.Light.NoActionBar">
+
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorPrimaryContainer">@color/primary_light</item>
+        <item name="colorOnPrimaryContainer">@color/primary_dark</item>
+
+        <!-- Background -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Status bar & navigation bar -->
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+
+        <!-- Dark icons for light backgrounds -->
+        <item name="android:windowLightStatusBar">true</item>
+
+
+    </style>
+
+
+
+    <style name="Theme.BarberUpdate.Splash"
+        parent="Theme.SplashScreen.IconBackground">
+
+        <item name="windowSplashScreenBackground">
+            @color/background
+        </item>
+
+        <item name="windowSplashScreenAnimatedIcon">
+            @drawable/ic_splash_scissors
+        </item>
+
+        <item name="windowSplashScreenIconBackgroundColor">
+            @color/primary_light
+        </item>
+
+        <item name="postSplashScreenTheme">
+            @style/Theme.BarberUpdate
+        </item>
+
+    </style>
+
+
+
+    <style name="Theme.BarberUpdate"
+        parent="Base.Theme.BarberUpdate" />
+
+</resources>

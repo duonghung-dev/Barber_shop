@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navCustomerHome"
+        android:icon="@drawable/ic_customer_nav_home"
+        android:title="Trang chủ" />
+
+    <item
+        android:id="@+id/navCustomerExplore"
+        android:icon="@drawable/ic_customer_nav_explore"
+        android:title="Khám phá" />
+
+    <item
+        android:id="@+id/navCustomerBookings"
+        android:icon="@drawable/ic_customer_nav_booking"
+        android:title="Lịch hẹn" />
+
+    <item
+        android:id="@+id/navCustomerProfile"
+        android:icon="@drawable/ic_customer_nav_profile"
+        android:title="Tài khoản" />
+
+</menu>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customerMyBookingsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ========================================
+         1. TOOLBAR
+         ======================================== -->
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarCustomerMyBookings"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:title="Lịch hẹn của tôi"
+        app:titleTextColor="@color/text_primary"
+        app:navigationIcon="@drawable/ic_guest_branch_back"
+        app:navigationIconTint="@color/primary" />
+
+    <!-- ========================================
+         2. PHẦN GIỚI THIỆU
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quản lý lịch hẹn"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Theo dõi các lịch hẹn đã đặt tại Barber Shop."
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- ========================================
+         3. BỘ LỌC LỊCH HẸN
+         ======================================== -->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fillViewport="false"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupCustomerBookingFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:chipSpacingHorizontal="10dp">
+
+            <!-- 3.1. Tất cả -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerBookingAll"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tất cả"
+                android:textColor="@color/text_primary"
+                android:checked="true"
+                app:checkable="true" />
+
+            <!-- 3.2. Sắp tới -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerBookingUpcoming"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sắp tới"
+                android:textColor="@color/text_primary"
+                app:checkable="true" />
+
+            <!-- 3.3. Lịch sử -->
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCustomerBookingHistory"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử"
+                android:textColor="@color/text_primary"
+                app:checkable="true" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <!-- ========================================
+         4. SỐ LƯỢNG LỊCH HẸN
+         ======================================== -->
+
+    <TextView
+        android:id="@+id/txtCustomerBookingCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Đang tải lịch hẹn..."
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <!-- ========================================
+         5. KHU VỰC DANH SÁCH
+         ======================================== -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp">
+
+        <!-- 5.1. RecyclerView -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCustomerBookings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
+
+        <!-- ========================================
+             5.2. TRẠNG THÁI KHÔNG CÓ LỊCH HẸN
+             ======================================== -->
+
+        <LinearLayout
+            android:id="@+id/layoutEmptyCustomerBookings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅"
+                android:textSize="42sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/txtEmptyCustomerBookingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Chưa có lịch hẹn"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtEmptyCustomerBookingsSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Bạn có thể bắt đầu đặt lịch để trải nghiệm dịch vụ."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- ========================================
+             5.3. TRẠNG THÁI ĐANG TẢI
+             ======================================== -->
+
+        <ProgressBar
+            android:id="@+id/progressCustomerBookings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:indeterminate="true" />
+
+    </FrameLayout>
+
+    <!-- ========================================
+         6. NÚT ĐẶT LỊCH MỚI
+         ======================================== -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:padding="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCustomerCreateNewBooking"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Đặt lịch mới"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

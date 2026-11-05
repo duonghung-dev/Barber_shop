@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/barberBookingRoot"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- 1. TOOLBAR -->
+
+    <LinearLayout
+        android:id="@+id/toolbarBarberBooking"
+
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+
+        android:background="@color/surface">
+
+        <TextView
+            android:id="@+id/btnBarberBookingBack"
+
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:gravity="center"
+
+            android:text="←"
+            android:textSize="26sp"
+            android:textColor="@color/text_primary"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Quay lại"
+
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Tất cả lịch hẹn"
+
+                android:textSize="19sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="3dp"
+
+                android:text="Quản lý các lịch hẹn của bạn"
+
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnBarberBookingRefresh"
+
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+
+            android:gravity="center"
+
+            android:text="↻"
+            android:textSize="27sp"
+            android:textColor="@color/primary"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Làm mới danh sách"
+
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </LinearLayout>
+
+    <!-- 2. ĐƯỜNG PHÂN CÁCH -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:background="@color/border_default"/>
+
+    <!-- 3. THẺ THỐNG KÊ BOOKING -->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBarberBookingOverview"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/primary_light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+
+            android:padding="18dp"
+
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Tổng lịch hẹn"
+
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/txtBarberBookingTotalCount"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
+
+                    android:text="—"
+                    android:textSize="29sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/primary_dark"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="47dp"
+
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="20dp"
+
+                android:background="@color/border_default"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Chờ xác nhận"
+
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"/>
+
+                <TextView
+                    android:id="@+id/txtBarberBookingPendingCount"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp"
+
+                    android:text="—"
+                    android:textSize="29sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/status_pending"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 4. TÌM KIẾM BOOKING -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutBarberBookingSearch"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+
+        android:hint="Tìm mã lịch hẹn hoặc dịch vụ"
+
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+
+        app:boxStrokeColor="@color/primary"
+
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtBarberBookingSearch"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="text"
+            android:maxLines="1"
+
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+
+            android:imeOptions="actionSearch"
+
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 5. BỘ LỌC NGÀY HẸN -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBarberBookingSelectDate"
+
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+
+            android:layout_weight="1"
+
+            android:text="📅  Tất cả ngày"
+
+            android:textSize="13sp"
+            android:textAllCaps="false"
+
+            android:textColor="@color/primary_dark"
+
+            app:backgroundTint="@color/primary_light"
+            app:cornerRadius="12dp"
+            app:elevation="0dp"/>
+
+        <TextView
+            android:id="@+id/btnBarberBookingClearDate"
+
+            android:layout_width="48dp"
+            android:layout_height="44dp"
+
+            android:layout_marginStart="8dp"
+
+            android:gravity="center"
+
+            android:text="✕"
+            android:textSize="18sp"
+            android:textColor="@color/text_secondary"
+
+            android:visibility="gone"
+
+            android:clickable="true"
+            android:focusable="true"
+
+            android:contentDescription="Bỏ lọc ngày hẹn"
+
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </LinearLayout>
+
+    <!-- 6. TIÊU ĐỀ BỘ LỌC TRẠNG THÁI -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+
+        android:text="Trạng thái lịch hẹn"
+
+        android:textSize="15sp"
+        android:textStyle="bold"
+
+        android:textColor="@color/text_primary"/>
+
+    <!-- 7. BỘ LỌC TRẠNG THÁI -->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupBarberBookingStatus"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+
+            app:chipSpacingHorizontal="8dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberBookingAll"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Tất cả"
+                android:textSize="13sp"
+
+                android:checked="true"
+                android:checkable="true"
+
+                app:checkedIconVisible="true"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberBookingPending"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Chờ xác nhận"
+                android:textSize="13sp"
+
+                android:checkable="true"
+
+                app:checkedIconVisible="true"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberBookingConfirmed"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Đã xác nhận"
+                android:textSize="13sp"
+
+                android:checkable="true"
+
+                app:checkedIconVisible="true"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberBookingCompleted"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Hoàn thành"
+                android:textSize="13sp"
+
+                android:checkable="true"
+
+                app:checkedIconVisible="true"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBarberBookingCancelled"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Đã hủy"
+                android:textSize="13sp"
+
+                android:checkable="true"
+
+                app:checkedIconVisible="true"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <!-- 8. SỐ KẾT QUẢ -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="12dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtBarberBookingResultCount"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+
+            android:text="Chưa tải danh sách"
+
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+
+            android:text="Chọn để xem chi tiết"
+
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"/>
+
+    </LinearLayout>
+
+    <!-- 9. KHU VỰC DANH SÁCH VÀ TRẠNG THÁI -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_weight="1">
+
+        <!-- 9.1. DANH SÁCH BOOKING -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerBarberBookings"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:paddingStart="20dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp"
+
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+
+            android:visibility="gone"/>
+
+        <!-- 9.2. TRẠNG THÁI TRỐNG -->
+
+        <LinearLayout
+            android:id="@+id/layoutBarberBookingEmpty"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="📋"
+                android:textSize="44sp"/>
+
+            <TextView
+                android:id="@+id/txtBarberBookingEmptyTitle"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="14dp"
+
+                android:gravity="center"
+
+                android:text="Chưa tải dữ liệu lịch hẹn"
+
+                android:textSize="17sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/txtBarberBookingEmptyMessage"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="9dp"
+
+                android:gravity="center"
+
+                android:text="Danh sách lịch hẹn của bạn sẽ được hiển thị tại đây."
+
+                android:textSize="13sp"
+                android:lineSpacingExtra="4dp"
+
+                android:textColor="@color/text_secondary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBarberBookingClearFilters"
+
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+
+                android:layout_marginTop="18dp"
+
+                android:minWidth="160dp"
+
+                android:text="Xóa bộ lọc"
+
+                android:textSize="14sp"
+                android:textAllCaps="false"
+
+                android:textColor="@color/primary_dark"
+
+                app:backgroundTint="@color/primary_light"
+                app:cornerRadius="12dp"
+                app:elevation="0dp"
+
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <!-- 9.3. TRẠNG THÁI ĐANG TẢI -->
+
+        <LinearLayout
+            android:id="@+id/layoutBarberBookingLoading"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:padding="24dp"
+
+            android:background="@color/background"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progressBarberBookings"
+
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+
+                android:indeterminateTint="@color/primary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+
+                android:gravity="center"
+
+                android:text="Đang tải danh sách lịch hẹn..."
+
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"/>
+
+        </LinearLayout>
+
+        <!-- 9.4. TRẠNG THÁI LỖI -->
+
+        <LinearLayout
+            android:id="@+id/layoutBarberBookingError"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:padding="24dp"
+
+            android:background="@color/background"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="⚠"
+                android:textSize="42sp"
+
+                android:textColor="@color/primary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+
+                android:gravity="center"
+
+                android:text="Không thể tải lịch hẹn"
+
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/txtBarberBookingError"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+
+                android:gravity="center"
+
+                android:text="Đã xảy ra lỗi khi tải dữ liệu. Vui lòng thử lại."
+
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp"
+
+                android:textColor="@color/text_secondary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBarberBookingRetry"
+
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+
+                android:layout_marginTop="22dp"
+
+                android:text="Thử lại"
+
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+
+                android:textColor="@color/surface"
+
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="12dp"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
